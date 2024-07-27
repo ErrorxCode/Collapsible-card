@@ -2,10 +2,10 @@
 # Expandable card (Jitpack library)
 <p align="left">
   <a href="#"><img alt="Languages-Kotlin" src="https://img.shields.io/badge/Language-Kotlin-1DA1F2?style=flat-square&logo=kotlin"></a>
-  <a href="#"><img alt="Version" src="https://jitpack.io/v/ErrorxCode/Collapsible-card.svg"></a>
+  <a href="#"><img alt="Version" src="https://jitpack.io/v/ErrorxCode/ExpandableCard.svg"></a>
   <a href="https://www.instagram.com/x0.rahil/"><img alt="Instagram - x0.rahil" src="https://img.shields.io/badge/Instagram-x0.rahil-lightgrey"></a>
-  <a href="#"><img alt="Downloads" src="https://jitpack.io/v/ErrorxCode/Collapsible-card/month.svg"></a>
-  <a href="#"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ErrorxCode/Collapsible-card?style=social"></a>
+  <a href="#"><img alt="Downloads" src="https://jitpack.io/v/ErrorxCode/ExpandableCard/month.svg"></a>
+  <a href="#"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ErrorxCode/ExpandableCard?style=social"></a>
   </p>
 
 > "The less the space occupied, the more the clean ui looks"
@@ -37,7 +37,7 @@ Add it in your root build.gradle at the end of repositories:
 	dependencies {
 	        implementation 'com.github.ErrorxCode:Collapsible-card:Tag'
 	}
-[![](https://jitpack.io/v/ErrorxCode/Collapsible-card.svg)](https://jitpack.io/#ErrorxCode/Collapsible-card)
+[![](https://jitpack.io/v/ErrorxCode/ExpandableCard.svg)](https://jitpack.io/#ErrorxCode/ExpandableCard)
 
 
 ## Usage/Examples
