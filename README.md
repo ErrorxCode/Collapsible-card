@@ -25,18 +25,21 @@ To deploy this project run
 **Step 1**. Add the JitPack repository to your build file
 
 Add it in your root build.gradle at the end of repositories:
-
-	allprojects {
+```groovy
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 		repositories {
-			...
+			mavenCentral()
 			maven { url 'https://jitpack.io' }
 		}
 	}
+```
 **Step 2**. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.ErrorxCode:Collapsible-card:Tag'
+	        implementation 'com.github.ErrorxCode:ExpandableCard:Tag'
 	}
+ 
 [![](https://jitpack.io/v/ErrorxCode/ExpandableCard.svg)](https://jitpack.io/#ErrorxCode/ExpandableCard)
 
 
