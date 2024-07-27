@@ -1,19 +1,20 @@
 
-# Collapsible card layout
+# Expandable card (Jitpack library)
 <p align="left">
-  <a href="#"><img alt="Languages-Java" src="https://img.shields.io/badge/Language-Java-1DA1F2?style=flat-square&logo=java"></a>
+  <a href="#"><img alt="Languages-Kotlin" src="https://img.shields.io/badge/Language-Kotlin-1DA1F2?style=flat-square&logo=kotlin"></a>
   <a href="#"><img alt="Version" src="https://jitpack.io/v/ErrorxCode/Collapsible-card.svg"></a>
   <a href="https://www.instagram.com/x0.rahil/"><img alt="Instagram - x0.rahil" src="https://img.shields.io/badge/Instagram-x0.rahil-lightgrey"></a>
   <a href="#"><img alt="Downloads" src="https://jitpack.io/v/ErrorxCode/Collapsible-card/month.svg"></a>
   <a href="#"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ErrorxCode/Collapsible-card?style=social"></a>
   </p>
 
-> "The less the space occipied, the more the clean ui looks"
+> "The less the space occupied, the more the clean ui looks"
 
-This library provides a simple Collapsible card-like layout in which you can put any number of views that can be collapsed and expended when required.
+This library provides an amazing Expandable card compose which you can use to show simple information or can put your own compose inside it.
 
-
-<img src=https://user-images.githubusercontent.com/65817230/227319350-305054be-3118-4e82-8ca9-c6aa4b7bb1f7.png width=60%>
+Expandable card             |  Simpleinfo card
+:-------------------------:|:-------------------------:
+![image](https://github.com/user-attachments/assets/d3f05920-a9ad-4977-a338-c765116a2248)  |  ![image](https://github.com/user-attachments/assets/cbac2fe4-0028-4b8b-8c74-dd0e3a3786b8)
 
 
 
@@ -41,71 +42,44 @@ Add it in your root build.gradle at the end of repositories:
 
 ## Usage/Examples
 
-The **CollapsibleCard** extends **RelativeLayout**. So you can place your views directly inside it.
-
-- **add 'main' to tag** of the child view you don't want to hide on collapsing.
-```xml
-<com.errorxcode.card.CollapsibleCard
-    android:id="@+id/card"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp">
-    
-    ...
-    ... 
-
-</com.errorxcode.card.CollapsibleCard>
-```
-- The card will expand collapse automatically on the clicking of 'main' view.
-
-
-**Note:** _You should not put any other layout inside it. The animation will fail if you do so_.
-
-**Demo example code**:
-```xml
-<com.errorxcode.card.CollapsibleCard
-    android:id="@+id/card"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp">
-
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:tag="main"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:layout_margin="10dp"
-        android:text="Finderprints"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Button"/>
-
-</com.errorxcode.card.CollapsibleCard>
+#### ExpandableCard
+```kotlin
+ExpandableCard("A beautiful landscape") {  
+  Image(  
+        painter = painterResource(R.drawable.img), contentDescription = "",  
+        contentScale = ContentScale.FillWidth,  
+        modifier = Modifier.fillMaxWidth()  
+    )  
+}
 ```
 
-and through java, you can anytime call `collapse()` or `expand()`.
+**Result**
 
-You can also modify transition using `setCustomTransition()` method like this:
-```java
-var transition = new AutoTransition();
-transition.setDuration(3000);
-transition.setInterpolator(new BounceInterpolator());
+![image](https://github.com/user-attachments/assets/d3f05920-a9ad-4977-a338-c765116a2248)
 
-card.setCustomTransition(transition);
+
+#### SimpleInfo card
+```kotlin
+SimpleInfoCard(  
+    "About Jetpack compose",  
+    "Jetpack Compose is Android’s......."  
+    true,  
+    "View more",  
+    {  
+	  println("View more clicked!")  
+    })
 ```
+
+**Result**
+
+![image](https://github.com/user-attachments/assets/cbac2fe4-0028-4b8b-8c74-dd0e3a3786b8)
+
+
+
 ## Contributing
 
 Contributions are always welcome!
 
-What you can do is you can add more customization options to it. You can contact me on [instagram](https://instagram.com/x0.rahil) before making a pull request.
-
+What you can do is you can add more customization options to it. You can anytime contact me on [instagram](https://instagram.com/x0.rahil) for any kind of help.
 
 
