@@ -4,11 +4,12 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -26,24 +27,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun SimpleInfoCard (
+fun SimpleInfoCard(
     title: String,
     text: String,
     expended: Boolean = false,
-    buttonTxt: String? = "View",
-    onClick : (() -> Unit)? = { },
-    cornerRadius: Int = 10
+    buttonTxt: String? = null,
+    onClick: (() -> Unit)? = null,
+    cornerRadius: Int = 10,
+    modifier: Modifier = Modifier
 ) {
     val expendedState = remember { mutableStateOf(expended) }
     Card(
-        modifier = Modifier
+        modifier = modifier
             .animateContentSize()
-            .fillMaxWidth()
             .padding(16.dp),
         shape = RoundedCornerShape(cornerRadius)
     ) {
@@ -51,8 +51,8 @@ fun SimpleInfoCard (
             CardHeader(title, expendedState)
 
             if (expendedState.value) {
-                Text(text, Modifier.padding(0.dp, 5.dp))
-                if (buttonTxt != null && onClick != null){
+                Text(text, Modifier.padding(0.dp, 10.dp))
+                if (buttonTxt != null && onClick != null) {
                     TextButton(onClick, Modifier.align(Alignment.End)) {
                         Text(buttonTxt)
                     }
@@ -64,16 +64,24 @@ fun SimpleInfoCard (
 
 
 @Composable
-private fun ExpandableCard(title: String = "Hello world",expended: Boolean = false,content: @Composable () -> Unit = {}) {
+fun ExpandableCard(
+    title: String,
+    expended: Boolean = false,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    val expendedState = remember{mutableStateOf(expended)}
     Card(
-        modifier = Modifier
+        modifier = modifier
             .animateContentSize()
-            .fillMaxWidth()
             .padding(16.dp)
-    ){
+    ) {
         Column(Modifier.padding(16.dp)) {
-            CardHeader("Card title", remember { mutableStateOf(expended) })
-            content()
+            CardHeader(title,expendedState)
+            if (expendedState.value){
+                Spacer(Modifier.height(20.dp))
+                content()
+            }
         }
     }
 }
@@ -81,12 +89,13 @@ private fun ExpandableCard(title: String = "Hello world",expended: Boolean = fal
 @Composable
 private fun CardHeader(title: String, expended: MutableState<Boolean>) {
     val rotation by animateFloatAsState(if (expended.value) 180f else 0f, label = "")
-    Row(
+    Row (
         Modifier
-            .fillMaxWidth()
+            .wrapContentWidth()
             .clickable {
                 expended.value = !expended.value
-            }, verticalAlignment = Alignment.CenterVertically) {
+            }, verticalAlignment = Alignment.CenterVertically
+    ) {
         Text(
             text = title,
             style = MaterialTheme.typography.titleLarge,
@@ -99,20 +108,7 @@ private fun CardHeader(title: String, expended: MutableState<Boolean>) {
             imageVector = Icons.Default.ArrowDropDown, "",
             modifier = Modifier
                 .weight(1f)
-                .rotate(rotation))
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun Test() {
-    Box {
-//        ExpandableCard("This is title"){
-//            SimpleInfoCard("This is title", "This is content")
-//        }
-
-        SimpleInfoCard("This is title", "This is content",true,"View",{
-            println("View")
-        })
+                .rotate(rotation)
+        )
     }
 }
